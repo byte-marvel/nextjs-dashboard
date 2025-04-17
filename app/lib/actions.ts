@@ -113,11 +113,11 @@ export async function deleteInvoice(id: string) {
 
 export async function authenticate(
     prevState: string | undefined,
-    formData: FormData,
+    authCode: String ,
 ) {
     try {
-        console.log('Authenticating...',formData);
-        await signIn('credentials', formData);
+        console.log('Authenticating...',authCode);
+        await signIn('credentials', {"authCode":authCode});
     } catch (error) {
         if (error instanceof AuthError) {
             switch (error.type) {
